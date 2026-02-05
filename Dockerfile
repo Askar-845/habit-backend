@@ -1,14 +1,25 @@
-# Step 1: Use Java 17 base image
-FROM eclipse-temurin:17-jre-alpine
 
-# Step 2: Set working directory inside container
+# ---------- Build stage ----------
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Step 3: Copy jar file into container
-COPY target/habitmanager-0.0.1-SNAPSHOT.jar app.jar
+# pom.xml + src copy
+COPY pom.xml .
+COPY src ./src
 
-# Step 4: Expose Spring Boot default port
+# Build jar
+RUN mvn clean package -DskipTests
+
+
+# ---------- Run stage ----------
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+
+# Build stage la irundhu jar copy
+COPY --from=build /app/target/habitmanager-0.0.1-SNAPSHOT.jar app.jar
+
+# Spring Boot port
 EXPOSE 8081
 
-# Step 5: Run the application
-ENTRYPOINT ["java","-jar","app.jar"] 
+# Run app
+ENTRYPOINT ["java","-jar","app.jar"]
