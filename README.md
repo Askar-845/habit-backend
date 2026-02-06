@@ -1,108 +1,60 @@
-Simple Habit Tracker – Backend
 
-This is the Spring Boot backend for the Simple Habit Tracker application.
-It manages users, their habits, and habit progress (milestones).
+📝 Habit Manager – Backend
 
-The system allows users to:
+This is the Spring Boot backend for the Habit Manager Application.
+It handles user creation, habit tracking, score updates, and data management for the system.
 
-Create habits
+🚀 Live Backend URL (Render – Free Plan)
 
-Track habit duration
+👉 https://habit-backend-7mh4.onrender.com/api/users/all
 
-Monitor progress using milestones
+(First time open pannum bodhu, konjam wait pannunga – [] return aagum)
 
-🚀 Live Backend URL (Optional – if deployed)
+⚠️ Important Note (Render Free Plan)
 
-👉 Backend URL:
-https://your-backend-url/api/habits
+This backend is hosted on Render Free Plan.
 
-⚠️ Important Note (Free Hosting):
-
-Backend may take 30–60 seconds to wake up
-
-First request may return empty response []
-
-Please wait until backend is fully started
-
-(If you have not deployed yet, you can remove this section)
+• If the backend is idle, it may sleep automatically
+• When opening the frontend, backend may take 30–60 seconds to wake up
+• Please open the backend URL once before using the frontend
 
 📊 Project Presentation
 
 👉 Download Project PPT
-(Add your PPT Google Drive / local link)
+(Add your PPT link here)
 
 🛠️ Tech Stack
 
-Java
+• Java
+• Spring Boot
+• Spring Data JPA
+• H2 Database (File-based, Persistent)
+• Maven
+• Docker
+• SonarCloud
+• Render (Deployment)
 
-Spring Boot
-
-Spring Data JPA
-
-H2 Database
-
-Maven
-
-(Optional if used)
-
-Docker
-
-SonarCloud
-
-🧩 Backend Features
-
-User Management (CRUD)
-
-Habit Management (CRUD)
-
-Milestone Tracking
-
-RESTful APIs
-
-In-memory H2 database for simplicity
-
-▶️ Run Project Locally
-1️⃣ Clone the repository
-git clone https://github.com/your-username/habit-tracker-backend.git
-
-2️⃣ Go to project directory
-cd habittracker
-
-3️⃣ Run Spring Boot application
-./mvnw spring-boot:run
-
-🌐 Backend runs at
-http://localhost:8080
-
-🗄️ H2 Database Console
-http://localhost:8080/h2-console
+▶️ Run Locally
+git clone https://github.com/<your-username>/habit-backend.git
+cd habitmanager
+mvn spring-boot:run
 
 
-Login details:
+Backend runs at:
+👉 http://localhost:8081
 
-JDBC URL : jdbc:h2:mem:habitdb
-Username : sa
-Password : (empty)
-
-🧠 Project Description (For Viva)
-
-“This project is a simple habit tracking system built using Spring Boot.
-Users can create habits and track their progress using milestones.
-H2 database is used for easy testing and demonstration.”
-
-🔍 SonarCloud (Optional)
+🔍 SonarCloud
 
 SonarCloud analysis integrated using GitHub Actions
 Quality Gate passed successfully ✅
 
-(Remove this section if you didn’t use SonarCloud)
+🌐 Frontend
 
-🌐 Frontend (Optional)
-
-Frontend can be built using React / Angular / HTML.
+Frontend is built using React and deployed on Vercel.
 
 👉 Frontend Repository:
-https://github.com/your-username/habit-tracker-frontend
+https://github.com/
+<your-username>/habit-frontend
 
 👉 Live Frontend URL:
-https://your-frontend-url.vercel.app
+https://habit-frontend-alpha.vercel.app
