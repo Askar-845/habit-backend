@@ -13,7 +13,7 @@ import java.util.Map;
         origins = {
                 "http://localhost:3000",
                 "http://localhost:3002",
-                "https://habit-frontend.vercel.app" // frontend deploy irundha
+                "https://habit-frontend-alpha.vercel.app"
         }
 )
 @RestController
@@ -94,7 +94,7 @@ public class UserRestController {
     }
 
     // =============================
-    // 7️⃣ Health Check (IMPORTANT)
+    // 7️⃣ Health Check
     // =============================
     @GetMapping("/test")
     public ResponseEntity<String> test() {
