@@ -1,3 +1,4 @@
+
 name: Build and SonarCloud Analysis
 
 on:
@@ -36,3 +37,4 @@ jobs:
             -Dsonar.sources=src/main/java
             -Dsonar.tests=src/test/java
             -Dsonar.java.binaries=target/classes
+            -Dsonar.qualitygate.wait=false
