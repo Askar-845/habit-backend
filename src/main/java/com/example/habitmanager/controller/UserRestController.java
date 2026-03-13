@@ -4,10 +4,13 @@ package com.example.habitmanager.controller;
 import com.example.habitmanager.entity.User;
 import com.example.habitmanager.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 @CrossOrigin(
     origins = {
@@ -42,8 +45,25 @@ public class UserRestController {
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody Map<String, Object> payload) {
 
-        String name = (String) payload.get("name");
-        int age = ((Number) payload.get("age")).intValue();
+        Object nameObj = payload.get("name");
+        String name = nameObj == null ? null : String.valueOf(nameObj).trim();
+        if (name == null || name.isBlank()) {
+            throw new ResponseStatusException(BAD_REQUEST, "'name' is required");
+        }
+
+        Object ageObj = payload.get("age");
+        int age;
+        if (ageObj instanceof Number number) {
+            age = number.intValue();
+        } else if (ageObj instanceof String str) {
+            try {
+                age = Integer.parseInt(str.trim());
+            } catch (NumberFormatException ex) {
+                throw new ResponseStatusException(BAD_REQUEST, "'age' must be a number");
+            }
+        } else {
+            throw new ResponseStatusException(BAD_REQUEST, "'age' is required and must be a number");
+        }
 
         User user = userService.createUser(name, age);
         return ResponseEntity.ok(user);
