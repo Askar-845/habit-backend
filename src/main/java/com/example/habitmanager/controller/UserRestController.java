@@ -10,11 +10,21 @@ import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(
-        origins = {
-                "http://localhost:3000",
-                "http://localhost:3002",
-                "https://habit-frontend-alpha.vercel.app"
-        }
+    origins = {
+        "http://localhost:3000",
+        "http://localhost:3002",
+        "https://habit-frontend-alpha.vercel.app",
+        "https://habit-frontend-ggc4ahbmbxd0bkhr.southeastasia-01.azurewebsites.net"
+    },
+    methods = {
+        RequestMethod.GET,
+        RequestMethod.POST,
+        RequestMethod.PUT,
+        RequestMethod.DELETE,
+        RequestMethod.OPTIONS
+    },
+    allowedHeaders = "*",
+    allowCredentials = "true"
 )
 @RestController
 @RequestMapping("/api/users")
