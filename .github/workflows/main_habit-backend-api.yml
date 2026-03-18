@@ -13,13 +13,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-     SONAR_ORGANIZATION: habit-mangement-org
-SONAR_PROJECT_KEY: habit-mangement-org_habit-backend
+  SONAR_ORGANIZATION: habit-mangement-org
+  SONAR_PROJECT_KEY: habit-mangement-org_habit-backend
 
-    permissions:
+permissions:
       contents: read #This is required for actions/checkout
-
-    steps:
+      steps:
       - uses: actions/checkout@v4
 
       - name: Set up Java version
