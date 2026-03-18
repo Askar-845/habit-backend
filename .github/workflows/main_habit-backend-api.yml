@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SONAR_ORGANIZATION: Askar-845
+      SONAR_PROJECT_KEY: Askar-845_habit-backend
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -30,7 +33,7 @@ jobs:
       - name: SonarCloud Scan
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=habit-mangement-org -Dsonar.projectKey=habit-mangement-org_habit-backend -Dsonar.token=${SONAR_TOKEN} -Dsonar.java.binaries=target/classes -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=${SONAR_ORGANIZATION} -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.token=${SONAR_TOKEN} -Dsonar.java.binaries=target/classes -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -Dsonar.junit.reportPaths=target/surefire-reports
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
