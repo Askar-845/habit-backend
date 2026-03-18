@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SONAR_ORGANIZATION: habit-mangement-org
-      SONAR_PROJECT_KEY: habit-mangement-org_habit-backend
+      SONAR_ORGANIZATION: Askar-845
+      SONAR_PROJECT_KEY: Askar-845_habit-backend
 
     permissions:
       contents: read
