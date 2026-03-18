@@ -7,7 +7,7 @@ on:
 
 env:
   JAVA_VERSION: '17'
-  AZURE_WEBAPP_NAME: ${{ secrets.AZURE_WEBAPP_NAME }}
+  AZURE_WEBAPP_NAME: 'habit-backend-api'
 
 jobs:
   build-and-deploy:
