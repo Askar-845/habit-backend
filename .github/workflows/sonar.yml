@@ -31,13 +31,13 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      # Build + Test + Coverage + Sonar
+      # Build + Test + Sonar
       - name: Build and Analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=habit-mangement-org_habit-backend \
-            -Dsonar.organization=habit-mangement-org \
+            -Dsonar.projectKey=Askar-845_habit-backend \
+            -Dsonar.organization=askar-845 \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
