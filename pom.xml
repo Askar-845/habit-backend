@@ -20,10 +20,10 @@
 
     <properties>
         <java.version>17</java.version>
-        <skipTests>false</skipTests>
     </properties>
 
     <dependencies>
+        <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -34,18 +34,21 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- DB -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
+        <!-- TESTING (VERY IMPORTANT) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -56,14 +59,14 @@
     <build>
         <plugins>
 
+            <!-- Ensure tests run -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>${skipTests}</skipTests>
-                </configuration>
+                <version>3.2.5</version>
             </plugin>
 
+            <!-- Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -77,35 +80,27 @@
                 </configuration>
             </plugin>
 
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
 
+            <!-- JaCoCo (COVERAGE FIX) -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.11</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/HabitmanagerApplication*</exclude>
-                    </excludes>
-                </configuration>
+
                 <executions>
+                    <!-- Attach agent -->
                     <execution>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
 
+                    <!-- Generate report -->
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
@@ -114,6 +109,7 @@
                         </goals>
                     </execution>
 
+                    <!-- Enforce coverage -->
                     <execution>
                         <id>check</id>
                         <phase>verify</phase>
@@ -126,7 +122,7 @@
                                     <element>BUNDLE</element>
                                     <limits>
                                         <limit>
-                                            <counter>INSTRUCTION</counter>
+                                            <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
                                             <minimum>0.80</minimum>
                                         </limit>
@@ -138,6 +134,7 @@
                 </executions>
             </plugin>
 
+            <!-- Sonar -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
